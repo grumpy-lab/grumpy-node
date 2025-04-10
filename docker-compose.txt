@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  nodejs-backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+      - /path/to/apache/files:/var/www/html
+    environment:
+      - NODE_ENV=production
+      - FILES_DIR=/var/www/html
+    restart: unless-stopped
